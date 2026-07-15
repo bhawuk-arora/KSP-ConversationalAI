@@ -7,6 +7,7 @@ import Header from "@/components/Header";
 import CommandPalette from "@/components/CommandPalette";
 import ChatContainer from "@/components/ChatContainer";
 import NetworkGraph from "@/components/NetworkGraph";
+import GisMap from "@/components/GisMap";
 
 import { 
   TrendingUp, 
@@ -212,17 +213,9 @@ export default function Home() {
             <NetworkGraph />
           )}
 
-          {/* TAB 4: GIS Hotspot Map Placeholder */}
+          {/* TAB 4: GIS Hotspot Map */}
           {currentTab === "map" && (
-            <div className="glass-panel h-[600px] rounded-2xl flex flex-col items-center justify-center space-y-4">
-              <div className="bg-emerald-600/10 border border-emerald-500/20 p-6 rounded-2xl text-emerald-500">
-                <MapPin size={48} />
-              </div>
-              <h2 className="text-lg font-bold font-display text-gray-200">GIS Spatiotemporal Hotspots</h2>
-              <p className="text-xs text-gray-500 text-center max-w-md leading-relaxed">
-                Geospatial Leaflet Maps skeleton initialized. We will implement station-level polygons, spatiotemporal clusters, and emerging spikes alerts in Phase 8.
-              </p>
-            </div>
+            <GisMap />
           )}
 
         </main>
