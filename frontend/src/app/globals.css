@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@theme {
+  /* Theme color overrides matching dark KSP specifications */
+  --color-police-bg: #030712;
+  --color-police-card: rgba(12, 16, 32, 0.45);
+  --color-police-border: rgba(35, 42, 66, 0.6);
+  --color-police-accent: #3b82f6;
+  --color-police-success: #10b981;
+  --color-police-warning: #f59e0b;
+  --color-police-danger: #ef4444;
+
+  /* Typography maps using Next.js font variables */
+  --font-sans: var(--font-inter), sans-serif;
+  --font-display: var(--font-outfit), sans-serif;
+}
+
+:root {
+  --background: #030712;
+  --foreground: #f3f4f6;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+/* Glassmorphism panel styles */
+.glass-panel {
+  background: rgba(12, 16, 32, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(35, 42, 66, 0.6);
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-panel-hover:hover {
+  border-color: rgba(59, 130, 246, 0.5);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.15);
+  transform: translateY(-1px);
+}
+
+/* Custom scrollbar for deep glass aesthetics */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(12, 16, 32, 0.2);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(59, 130, 246, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(59, 130, 246, 0.6);
+}
