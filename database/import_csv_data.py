@@ -92,7 +92,7 @@ def import_all_data():
                 # Get headers to explicitly list columns
                 header_line = f.readline().strip()
                 columns = header_line.split(",")
-                columns_str = ", ".join([f'"{col}"' for col in columns])
+                columns_str = ", ".join([f'"{col.lower()}"' for col in columns])
                 
                 # Reset file read cursor back to beginning
                 f.seek(0)

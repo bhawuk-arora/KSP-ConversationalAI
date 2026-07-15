@@ -13,14 +13,14 @@ CREATE TABLE State (
     StateID SERIAL PRIMARY KEY,
     StateName VARCHAR(100) NOT NULL,
     NationalityID INT DEFAULT 1,
-    Active BOOLEAN DEFAULT TRUE
+    Active INT DEFAULT 1
 );
 
 CREATE TABLE District (
     DistrictID INT PRIMARY KEY,
     DistrictName VARCHAR(100) NOT NULL,
     StateID INT REFERENCES State(StateID),
-    Active BOOLEAN DEFAULT TRUE
+    Active INT DEFAULT 1
 );
 
 CREATE TABLE Court (
@@ -28,7 +28,7 @@ CREATE TABLE Court (
     CourtName VARCHAR(255) NOT NULL,
     DistrictID INT REFERENCES District(DistrictID),
     StateID INT REFERENCES State(StateID),
-    Active BOOLEAN DEFAULT TRUE
+    Active INT DEFAULT 1
 );
 
 CREATE TABLE UnitType (
@@ -36,7 +36,7 @@ CREATE TABLE UnitType (
     UnitTypeName VARCHAR(100) NOT NULL,
     CityDistState VARCHAR(50),
     Hierarchy INT,
-    Active BOOLEAN DEFAULT TRUE
+    Active INT DEFAULT 1
 );
 
 CREATE TABLE Unit (
@@ -47,20 +47,20 @@ CREATE TABLE Unit (
     NationalityID INT DEFAULT 1,
     StateID INT REFERENCES State(StateID),
     DistrictID INT REFERENCES District(DistrictID),
-    Active BOOLEAN DEFAULT TRUE
+    Active INT DEFAULT 1
 );
 
 CREATE TABLE Rank (
     RankID INT PRIMARY KEY,
     RankName VARCHAR(100) NOT NULL,
     Hierarchy INT,
-    Active BOOLEAN DEFAULT TRUE
+    Active INT DEFAULT 1
 );
 
 CREATE TABLE Designation (
     DesignationID INT PRIMARY KEY,
     DesignationName VARCHAR(100) NOT NULL,
-    Active BOOLEAN DEFAULT TRUE,
+    Active INT DEFAULT 1,
     SortOrder INT
 );
 
@@ -116,7 +116,7 @@ CREATE TABLE CaseStatusMaster (
 CREATE TABLE CrimeHead (
     CrimeHeadID INT PRIMARY KEY,
     CrimeGroupName VARCHAR(150) NOT NULL, -- e.g. Crimes Against Body
-    Active BOOLEAN DEFAULT TRUE
+    Active INT DEFAULT 1
 );
 
 CREATE TABLE CrimeSubHead (
@@ -130,14 +130,14 @@ CREATE TABLE Act (
     ActCode VARCHAR(50) PRIMARY KEY, -- e.g. IPC, NDPS
     ActDescription VARCHAR(255) NOT NULL,
     ShortName VARCHAR(50),
-    Active BOOLEAN DEFAULT TRUE
+    Active INT DEFAULT 1
 );
 
 CREATE TABLE Section (
     ActCode VARCHAR(50) REFERENCES Act(ActCode),
     SectionCode VARCHAR(50) NOT NULL, -- e.g. 302, 307
     SectionDescription TEXT,
-    Active BOOLEAN DEFAULT TRUE,
+    Active INT DEFAULT 1,
     PRIMARY KEY (ActCode, SectionCode)
 );
 

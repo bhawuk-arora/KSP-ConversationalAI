@@ -1,7 +1,7 @@
 // frontend/src/app/page.tsx
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Sidebar from "@/components/Sidebar";
 import Header from "@/components/Header";
 import CommandPalette from "@/components/CommandPalette";
@@ -24,9 +24,76 @@ import {
 } from "lucide-react";
 
 export default function Home() {
+  const [token, setToken] = useState<string | null>(null);
+  const [user, setUser] = useState<{ email: string, role: string, station_id: number } | null>(null);
+  const [emailInput, setEmailInput] = useState("");
+  const [passwordInput, setPasswordInput] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
+  const [isMounted, setIsMounted] = useState(false);
+
   const [currentTab, setCurrentTab] = useState("dashboard");
   const [demoMode, setDemoMode] = useState(true);
   const [searchOpen, setSearchOpen] = useState(false);
+
+  // Authenticate token status on mount
+  useEffect(() => {
+    setIsMounted(true);
+    const storedToken = localStorage.getItem("token");
+    if (storedToken) {
+      setToken(storedToken);
+      try {
+        const payload = JSON.parse(window.atob(storedToken.split(".")[1]));
+        setUser({
+          email: payload.sub,
+          role: payload.role,
+          station_id: payload.station_id
+        });
+      } catch (e) {
+        localStorage.removeItem("token");
+      }
+    }
+  }, []);
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setErrorMsg("");
+    try {
+      const formData = new URLSearchParams();
+      formData.append("username", emailInput);
+      formData.append("password", passwordInput);
+      
+      const res = await fetch("http://localhost:8000/api/v1/auth/token", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: formData
+      });
+      
+      if (res.ok) {
+        const data = await res.json();
+        localStorage.setItem("token", data.access_token);
+        setToken(data.access_token);
+        
+        const payload = JSON.parse(window.atob(data.access_token.split(".")[1]));
+        setUser({
+          email: payload.sub,
+          role: payload.role,
+          station_id: payload.station_id
+        });
+      } else {
+        setErrorMsg("Authentication failed. Check your KSP email/password.");
+      }
+    } catch (err) {
+      setErrorMsg("Cannot connect to KSP backend API. Make sure it is running.");
+    }
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setToken(null);
+    setUser(null);
+    setEmailInput("");
+    setPasswordInput("");
+  };
 
   // Sample analytics data reflecting real KSP contexts
   const kpis = [
@@ -54,6 +121,65 @@ export default function Home() {
     { caseId: "FIR:300040077202600001", date: "2026-06-10", crimeHead: "Property Offences", status: "Under Investigation" }
   ];
 
+  // Render glassmorphism Login card if not authenticated
+  if (isMounted && !token) {
+    return (
+      <div className="flex h-screen w-screen items-center justify-center bg-police-bg overflow-hidden relative">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl" />
+
+        <div className="glass-panel w-full max-w-md p-8 rounded-3xl space-y-6 z-10 border border-police-border/40 shadow-2xl">
+          <div className="text-center space-y-2">
+            <h1 className="text-2xl font-bold font-display text-gray-100 tracking-wide">Karnataka State Police</h1>
+            <p className="text-xs text-gray-500 uppercase tracking-widest">Crime Intelligence Hub</p>
+          </div>
+
+          <form onSubmit={handleLogin} className="space-y-4">
+            <div className="space-y-1">
+              <label className="text-[10px] uppercase font-bold tracking-wider text-gray-400">Clearance Email</label>
+              <input
+                type="email"
+                value={emailInput}
+                onChange={(e) => setEmailInput(e.target.value)}
+                placeholder="io@ksp.gov.in"
+                required
+                className="w-full bg-white/5 border border-police-border/60 rounded-xl px-4 py-2.5 text-xs text-gray-200 focus:outline-none focus:border-blue-500 transition-all"
+              />
+            </div>
+
+            <div className="space-y-1">
+              <label className="text-[10px] uppercase font-bold tracking-wider text-gray-400">Security Password</label>
+              <input
+                type="password"
+                value={passwordInput}
+                onChange={(e) => setPasswordInput(e.target.value)}
+                placeholder="••••••••"
+                required
+                className="w-full bg-white/5 border border-police-border/60 rounded-xl px-4 py-2.5 text-xs text-gray-200 focus:outline-none focus:border-blue-500 transition-all"
+              />
+            </div>
+
+            {errorMsg && (
+              <p className="text-[10px] text-red-500 font-semibold">{errorMsg}</p>
+            )}
+
+            <button
+              type="submit"
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 rounded-xl text-xs tracking-wider uppercase transition-all shadow-lg hover:shadow-blue-500/20 cursor-pointer"
+            >
+              Sign In Clearances
+            </button>
+          </form>
+
+          <div className="border-t border-police-border/30 pt-4 text-center">
+            <span className="text-[9px] text-gray-500 uppercase tracking-wide">Official SCRB Access Only</span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Render fully populated dashboard if authenticated
   return (
     <div className="flex h-screen w-screen overflow-hidden bg-police-bg">
       {/* Collapsible Left Sidebar */}
@@ -65,6 +191,8 @@ export default function Home() {
           demoMode={demoMode} 
           setDemoMode={setDemoMode} 
           onSearchClick={() => setSearchOpen(true)} 
+          user={user}
+          onLogout={handleLogout}
         />
 
         <main className="flex-1 overflow-y-auto p-6 space-y-6">

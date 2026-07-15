@@ -1,15 +1,17 @@
 // frontend/src/components/Header.tsx
 "use client";
 
-import { Search, Bell, ShieldCheck, Database, GitBranch, ShieldAlert } from "lucide-react";
+import { Search, Bell, ShieldCheck, Database, GitBranch, ShieldAlert, LogOut } from "lucide-react";
 
 interface HeaderProps {
   demoMode: boolean;
   setDemoMode: (val: boolean) => void;
   onSearchClick: () => void;
+  user: { email: string, role: string, station_id: number } | null;
+  onLogout: () => void;
 }
 
-export default function Header({ demoMode, setDemoMode, onSearchClick }: HeaderProps) {
+export default function Header({ demoMode, setDemoMode, onSearchClick, user, onLogout }: HeaderProps) {
   return (
     <header className="h-16 border-b border-police-border/40 px-6 flex items-center justify-between sticky top-0 bg-police-bg/85 backdrop-blur-md z-30">
       {/* Left: Interactive Search Bar & Command Hint */}
@@ -75,11 +77,24 @@ export default function Header({ demoMode, setDemoMode, onSearchClick }: HeaderP
         </button>
 
         {/* Officer Clearance Badge */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
+          <div className="flex flex-col items-end text-[10px] hidden lg:flex">
+            <span className="font-bold text-gray-300">{user?.email || "io@ksp.gov.in"}</span>
+            <span className="text-gray-500 text-[9px]">Station ID: {user?.station_id || 1002}</span>
+          </div>
           <span className="text-[10px] font-bold tracking-wider uppercase bg-blue-500/20 text-blue-400 px-2 py-1 rounded-md border border-blue-500/30">
-            Inspector (IO)
+            {user?.role || "Investigator"}
           </span>
         </div>
+
+        {/* Logout Button */}
+        <button 
+          onClick={onLogout}
+          className="hover:bg-red-500/10 p-2 rounded-xl border border-transparent hover:border-red-500/20 text-gray-400 hover:text-red-400 transition-all cursor-pointer"
+          title="Sign out of system"
+        >
+          <LogOut size={16} />
+        </button>
       </div>
     </header>
   );

@@ -61,8 +61,8 @@ def setup_neo4j_graph():
         except Exception: pass
 
         # 2. Ingest PoliceStation nodes
-        print("Fetching PoliceStation records...")
-        pg_cursor.execute("SELECT PoliceStationID, PoliceStation FROM PoliceStation;")
+        print("Fetching Unit records...")
+        pg_cursor.execute("SELECT UnitID, UnitName FROM Unit;")
         stations = pg_cursor.fetchall()
         print(f"Loading {len(stations)} PoliceStations...")
         for station_id, name in stations:
@@ -101,8 +101,8 @@ def setup_neo4j_graph():
         # 4. Ingest Accused nodes & ACCUSED_IN relationships
         print("Fetching Accused records...")
         pg_cursor.execute(
-            "SELECT AccusedID, Name, GenderID, Age, CaseMasterID "
-            "FROM Accused WHERE Name IS NOT NULL AND CaseMasterID IS NOT NULL LIMIT 5000;"
+            "SELECT AccusedMasterID, AccusedName, GenderID, AgeYear, CaseMasterID "
+            "FROM Accused WHERE AccusedName IS NOT NULL AND CaseMasterID IS NOT NULL LIMIT 5000;"
         )
         accused_rows = pg_cursor.fetchall()
         print(f"Loading {len(accused_rows)} Accused suspects and case involvements...")

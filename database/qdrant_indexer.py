@@ -63,7 +63,7 @@ def index_case_facts():
         sys.exit(1)
 
     print("Fetching CaseMaster facts...")
-    cursor.execute("SELECT CaseMasterID, CrimeNo, BriefFacts, CrimeMajorHeadID, CrimeRegisteredDate FROM CaseMaster WHERE BriefFacts IS NOT NULL;")
+    cursor.execute("SELECT CaseMasterID, CrimeNo, BriefFacts, CrimeMajorHeadID, CrimeRegisteredDate FROM CaseMaster WHERE BriefFacts IS NOT NULL LIMIT 1000;")
     cases = cursor.fetchall()
     print(f"Found {len(cases)} cases to vectorize.")
 

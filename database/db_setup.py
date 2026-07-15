@@ -75,6 +75,8 @@ def run_schema_file():
         with open(schema_path, "r", encoding="utf-8") as f:
             schema_sql = f.read()
             
+        # Clean existing tables/types to prevent relation collision errors
+        cursor.execute("DROP SCHEMA public CASCADE; CREATE SCHEMA public; CREATE EXTENSION IF NOT EXISTS postgis;")
         cursor.execute(schema_sql)
         conn.commit()
         print("Schema tables, constraints, extensions, and indexes initialized successfully.")
