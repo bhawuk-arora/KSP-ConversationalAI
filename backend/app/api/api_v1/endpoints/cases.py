@@ -6,12 +6,13 @@ from sqlalchemy import or_, and_
 from sqlalchemy.orm import Session
 
 from app.core.database import get_db
+from app.api.deps import RoleChecker
 from app.models.ksp_models import CaseMaster, Employee, ArrestSurrender, ChargesheetDetails, Section, ActSectionAssociation
 from app.schemas.case import CaseMasterResponse, CaseMasterDetailResponse, CaseTimelineEvent
 
 router = APIRouter()
 
-@router.get("/search", response_model=List[CaseMasterResponse])
+@router.get("/search", response_model=List[CaseMasterResponse], dependencies=[Depends(RoleChecker(["Constable", "Investigator", "Analyst", "Supervisor", "Admin"]))])
 def search_cases(
     db: Session = Depends(get_db),
     query: Optional[str] = Query(None, description="Search facts or case numbers"),
@@ -64,7 +65,7 @@ def search_cases(
                 
     return results
 
-@router.get("/{case_id}", response_model=CaseMasterDetailResponse)
+@router.get("/{case_id}", response_model=CaseMasterDetailResponse, dependencies=[Depends(RoleChecker(["Investigator", "Analyst", "Supervisor", "Admin"]))])
 def get_case_detail(case_id: int, db: Session = Depends(get_db)):
     """
     Retrieve full details of a specific case including complainants, victims, accused, and acts/sections.
@@ -74,7 +75,7 @@ def get_case_detail(case_id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Case file not found.")
     return case
 
-@router.get("/{case_id}/timeline", response_model=List[CaseTimelineEvent])
+@router.get("/{case_id}/timeline", response_model=List[CaseTimelineEvent], dependencies=[Depends(RoleChecker(["Investigator", "Analyst", "Supervisor", "Admin"]))])
 def get_case_timeline(case_id: int, db: Session = Depends(get_db)):
     """
     Build a chronological timeline of events for a case file (Registration -> Arrests -> Chargesheets).
@@ -144,7 +145,7 @@ def get_case_timeline(case_id: int, db: Session = Depends(get_db)):
     timeline.sort(key=lambda x: x.event_date)
     return timeline
 
-@router.get("/{case_id}/similar", response_model=List[CaseMasterResponse])
+@router.get("/{case_id}/similar", response_model=List[CaseMasterResponse], dependencies=[Depends(RoleChecker(["Investigator", "Analyst", "Supervisor", "Admin"]))])
 def get_similar_cases(case_id: int, db: Session = Depends(get_db), limit: int = 5):
     """
     Find solved/similar cases based on overlapping legal sections and major/minor crime heads.

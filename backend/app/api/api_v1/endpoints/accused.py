@@ -5,12 +5,13 @@ from sqlalchemy import or_, and_
 from sqlalchemy.orm import Session
 
 from app.core.database import get_db
+from app.api.deps import RoleChecker
 from app.models.ksp_models import Accused, CaseMaster, ArrestSurrender
 from app.schemas.accused import AccusedResponse, AccusedDetailResponse
 
 router = APIRouter()
 
-@router.get("/search", response_model=List[AccusedResponse])
+@router.get("/search", response_model=List[AccusedResponse], dependencies=[Depends(RoleChecker(["Constable", "Investigator", "Analyst", "Supervisor", "Admin"]))])
 def search_accused(
     db: Session = Depends(get_db),
     name: Optional[str] = Query(None, description="Search accused by name"),
@@ -40,7 +41,7 @@ def search_accused(
                 .all()
     return results
 
-@router.get("/{accused_id}/history", response_model=List[AccusedDetailResponse])
+@router.get("/{accused_id}/history", response_model=List[AccusedDetailResponse], dependencies=[Depends(RoleChecker(["Investigator", "Analyst", "Supervisor", "Admin"]))])
 def get_accused_history(accused_id: int, db: Session = Depends(get_db)):
     """
     Fetch historical cases and arrests associated with a specific accused suspect (supporting repeat offender identification).

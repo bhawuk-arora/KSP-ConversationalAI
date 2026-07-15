@@ -6,3 +6,5 @@ pydantic
 pydantic-settings
 pytest
 httpx
+PyJWT
+passlib[bcrypt]
