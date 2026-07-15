@@ -18,17 +18,30 @@ import {
 interface SidebarProps {
   currentTab: string;
   setCurrentTab: (tab: string) => void;
+  user: { email: string; role: string; station_id: number } | null;
+  onLogout: () => void;
 }
 
-export default function Sidebar({ currentTab, setCurrentTab }: SidebarProps) {
+export default function Sidebar({ currentTab, setCurrentTab, user, onLogout }: SidebarProps) {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   const navItems = [
     { id: "dashboard", label: "Dashboard", icon: LayoutDashboard },
     { id: "copilot", label: "AI Assistant", icon: MessageSquareCode },
     { id: "network", label: "Network Graph", icon: Network },
-    { id: "map", label: "Hotspot Map", icon: Map },
+    { id: "simulation", label: "Scenario Sim", icon: Settings },
   ];
+  // Filter nav items based on user role (RBAC)
+  const filteredNav = (() => {
+    if (!user) return navItems;
+    const role = user.role.toLowerCase();
+    if (role.includes("constable")) {
+      // Constable sees only dashboard and copilot
+      return navItems.filter(item => ["dashboard", "copilot"].includes(item.id));
+    }
+    // Supervisor/DGP and Investigator see all tabs
+    return navItems;
+  })();
 
   return (
     <aside 
@@ -60,7 +73,7 @@ export default function Sidebar({ currentTab, setCurrentTab }: SidebarProps) {
 
         {/* Navigation list */}
         <nav className="p-3 space-y-1">
-          {navItems.map((item) => {
+          {filteredNav.map((item) => {
             const Icon = item.icon;
             const isActive = currentTab === item.id;
             return (
@@ -91,20 +104,30 @@ export default function Sidebar({ currentTab, setCurrentTab }: SidebarProps) {
           </div>
           {!isCollapsed && (
             <div className="min-w-0">
-              <p className="text-xs font-semibold text-gray-200 truncate">Insp. Siddaraju</p>
-              <p className="text-[10px] text-gray-500 truncate">KGID: 00395 | Station 1002</p>
-            </div>
+                {user ? (
+                  <>
+                    <p className="text-xs font-semibold text-gray-200 truncate">{user.email}</p>
+                    <p className="text-[10px] text-gray-500 truncate">KGID: {user.email.split('@')[0]} | Station {user.station_id}</p>
+                  </>
+                ) : (
+                  <>
+                    <p className="text-xs font-semibold text-gray-200 truncate">Guest User</p>
+                    <p className="text-[10px] text-gray-500 truncate">KGID: N/A | Station N/A</p>
+                  </>
+                )}
+              </div>
           )}
         </div>
         
         <button 
-          className={`w-full flex items-center gap-3 p-2.5 rounded-xl text-gray-500 hover:text-red-400 hover:bg-red-500/10 border border-transparent hover:border-red-500/20 transition-all cursor-pointer ${
-            isCollapsed ? "justify-center" : ""
-          }`}
-        >
-          <LogOut size={16} className="shrink-0" />
-          {!isCollapsed && <span className="text-xs font-medium">Log out</span>}
-        </button>
+            onClick={onLogout}
+            className={`w-full flex items-center gap-3 p-2.5 rounded-xl text-gray-500 hover:text-red-400 hover:bg-red-500/10 border border-transparent hover:border-red-500/20 transition-all cursor-pointer ${
+              isCollapsed ? "justify-center" : ""
+            }`}
+          >
+            <LogOut size={16} className="shrink-0" />
+            {!isCollapsed && <span className="text-xs font-medium">Log out</span>}
+          </button>
       </div>
     </aside>
   );

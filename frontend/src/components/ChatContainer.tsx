@@ -30,26 +30,53 @@ export default function ChatContainer({ demoMode }: ChatContainerProps) {
   ]);
   const [inputVal, setInputVal] = useState("");
 
-  const handleSend = () => {
+  const handleSend = async () => {
     if (!inputVal.trim()) return;
     const userText = inputVal;
     setInputVal("");
-    
+
     // Add user message
     setMessages(prev => [...prev, { sender: "user", text: userText }]);
 
-    // Simulated Bot response with SQL explainability & confidence
-    setTimeout(() => {
-      setMessages(prev => [...prev, {
-        sender: "bot",
-        text: demoMode 
-          ? "I scanned CaseMaster records for robbery incidents in Kalasipalya. There is 1 recurring suspect matching the Modus Operandi (lock breaking by night) across cases: <SUSPECT_A_MASKED>."
-          : "I scanned CaseMaster records for robbery incidents in Kalasipalya. There is 1 recurring suspect matching the Modus Operandi (lock breaking by night) across cases: Ravi alias Kariya.",
-        sql: "SELECT * FROM CaseMaster JOIN Accused ON CaseMaster.CaseMasterID = Accused.CaseMasterID WHERE PoliceStationID = 1002 AND CrimeMinorHeadID = 3;",
-        confidence: 0.96,
-        citations: ["FIR:100120257202500001", "FIR:100120257202600003"]
-      }]);
-    }, 1000);
+    try {
+      const response = await fetch("http://localhost:8000/api/v1/chat/message", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: userText, session_id: "", demo_mode: demoMode })
+      });
+      if (!response.body) throw new Error("No response body");
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let done = false;
+      let botMessage = { sender: "bot", text: "", sql: "", confidence: 0, citations: [] };
+
+      while (!done) {
+        const { value, done: readerDone } = await reader.read();
+        done = readerDone;
+        if (value) {
+          const chunk = decoder.decode(value, { stream: true });
+          const lines = chunk.split("\n").filter(line => line.startsWith("data:"));
+          for (const line of lines) {
+            const jsonStr = line.replace(/^data:\s*/, "");
+            const data = JSON.parse(jsonStr);
+            if (data.event === "message_chunk") {
+              botMessage.text += data.text;
+              setMessages(prev => [...prev, { ...botMessage }]);
+            } else if (data.event === "metadata") {
+              botMessage.sql = data.sql_executed || "";
+              botMessage.citations = data.citations || [];
+              botMessage.confidence = data.confidence_score || 0;
+              setMessages(prev => [...prev, { ...botMessage }]);
+            } else if (data.event === "error") {
+              setMessages(prev => [...prev, { sender: "bot", text: `Error: ${data.text}` }]);
+            }
+          }
+        }
+      }
+    } catch (e) {
+      console.error(e);
+      setMessages(prev => [...prev, { sender: "bot", text: "Failed to connect to backend chat service." }]);
+    }
   };
 
   return (

@@ -4,6 +4,7 @@
 import { useState, useEffect } from "react";
 import Sidebar from "@/components/Sidebar";
 import Header from "@/components/Header";
+import ScenarioSimulator from "@/components/ScenarioSimulator";
 import CommandPalette from "@/components/CommandPalette";
 import ChatContainer from "@/components/ChatContainer";
 import NetworkGraph from "@/components/NetworkGraph";
@@ -183,7 +184,7 @@ export default function Home() {
   return (
     <div className="flex h-screen w-screen overflow-hidden bg-police-bg">
       {/* Collapsible Left Sidebar */}
-      <Sidebar currentTab={currentTab} setCurrentTab={setCurrentTab} />
+      <Sidebar currentTab={currentTab} setCurrentTab={setCurrentTab} user={user} onLogout={handleLogout} />
 
       {/* Main content viewport */}
       <div className="flex-1 flex flex-col min-w-0">
@@ -344,6 +345,11 @@ export default function Home() {
           {/* TAB 4: GIS Hotspot Map */}
           {currentTab === "map" && (
             <GisMap />
+          )}
+
+          {/* TAB 5: Scenario Simulation */}
+          {currentTab === "simulation" && (
+            <ScenarioSimulator />
           )}
 
         </main>

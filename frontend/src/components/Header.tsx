@@ -1,7 +1,7 @@
 // frontend/src/components/Header.tsx
 "use client";
 
-import { Search, Bell, ShieldCheck, Database, GitBranch, ShieldAlert, LogOut } from "lucide-react";
+import { Search, Bell, ShieldCheck, Database, GitBranch, ShieldAlert, LogOut, Download } from "lucide-react";
 
 interface HeaderProps {
   demoMode: boolean;
@@ -87,6 +87,33 @@ export default function Header({ demoMode, setDemoMode, onSearchClick, user, onL
           </span>
         </div>
 
+          {/* PDF Report Download */}
+          <button
+            onClick={async () => {
+              try {
+                const res = await fetch('http://localhost:8000/api/v1/reports/pdf', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ include_kpis: true, include_recent_cases: true, include_risk_profiles: true }),
+                });
+                if (!res.ok) throw new Error('Failed to generate report');
+                const blob = await res.blob();
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'KSP_Report.pdf';
+                a.click();
+                window.URL.revokeObjectURL(url);
+              } catch (e) {
+                console.error(e);
+                alert('Error downloading report');
+              }
+            }}
+            className="hover:bg-green-500/10 p-2 rounded-xl border border-transparent hover:border-green-500/20 text-gray-400 hover:text-green-400 transition-all cursor-pointer"
+            title="Download PDF report"
+          >
+            <Download size={16} />
+          </button>
         {/* Logout Button */}
         <button 
           onClick={onLogout}
