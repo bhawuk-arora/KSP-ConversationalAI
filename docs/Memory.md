@@ -14,9 +14,9 @@ This document maintains the persistent state and context of the KSP Crime Intell
 
 ## 2. Current Development State
 
-- **Current Milestone**: Phase 7 - Graph Analytics & Neo4j Integration
-- **Status**: IN-PROGRESS (Conversational RAG engine, REST API, Auth, and Frontend skeleton are completed, ready to implement Neo4j indexing and frontend network visualization)
-- **Active Phase**: Phase 7
+- **Current Milestone**: Phase 9 - PDF Reports & Scenario Simulation
+- **Status**: IN-PROGRESS (GIS maps, Graph analytics, Conversational AI engine, REST API, Auth, and Frontend layout are completed, ready to implement PDF reports generator and scenario simulation UI)
+- **Active Phase**: Phase 9
 
 ---
 
@@ -70,11 +70,25 @@ This document maintains the persistent state and context of the KSP Crime Intell
   - Built the stateful multi-agent LangGraph workflow (`agent_state.py`, `sql_agent.py` with safety block overrides, `vector_agent.py`, `graph_coordinator.py`).
   - Added streaming Server-Sent Events (SSE) chat router inside `backend/app/api/api_v1/endpoints/chat.py`. Tested entire backend suite successfully (`10 passed` with zero failures).
 
+### Milestone 7: Graph Analytics & Neo4j Integration (Phase 7)
+- **Status**: Completed
+- **Accomplished**:
+  - Authored `database/neo4j_setup.py` establishing index mappings and linking co-accused suspects.
+  - Added tracing endpoints `GET /api/v1/network/suspect/{accused_id}` with SQL fallback triggers.
+  - Created `NetworkGraph.tsx` interactive SVG connections diagram with detail inspector sidebars.
+
+### Milestone 8: GIS & Map Visualizations (Phase 8)
+- **Status**: Completed
+- **Accomplished**:
+  - Built `GET /api/v1/gis/hotspots` API returning PostGIS coordinates and crime weights.
+  - Implemented dynamic script loaders for Leaflet maps (`GisMap.tsx`) centered around Bengaluru limits, running fully client-side (no SSR window issues).
+  - Styled tiles with custom dark filters and overlaid glowing pulsing HTML marker flags. Passed all compilation checks successfully.
+
 ---
 
 ## 4. Next Action Items
 
-1. Write Neo4j network importer populating suspect/arrest/chargesheet relationship graphs.
-2. Build network analysis APIs (community detection, risk link tracing) in the backend.
-3. Install frontend graph canvas dependencies (e.g. React Flow) and implement the suspect connections graph visualization dashboard.
+1. Install PDF compilation libraries (e.g. `reportlab` or standard HTML-to-PDF templates).
+2. Write report compiler routers that output case dossiers as cryptographically signed PDF logs.
+3. Build the scenario simulator UI inside Next.js, allowing officers to tweak troop patrols and check forecasted crime spikes.
 
