@@ -14,9 +14,9 @@ This document maintains the persistent state and context of the KSP Crime Intell
 
 ## 2. Current Development State
 
-- **Current Milestone**: Phase 6 - AI Engine & LangGraph Integration
-- **Status**: IN-PROGRESS (Database, backend REST API, Auth/RBAC, and frontend skeleton dashboard are completed and verified, ready to implement conversational LangGraph flow)
-- **Active Phase**: Phase 6
+- **Current Milestone**: Phase 7 - Graph Analytics & Neo4j Integration
+- **Status**: IN-PROGRESS (Conversational RAG engine, REST API, Auth, and Frontend skeleton are completed, ready to implement Neo4j indexing and frontend network visualization)
+- **Active Phase**: Phase 7
 
 ---
 
@@ -62,11 +62,19 @@ This document maintains the persistent state and context of the KSP Crime Intell
   - Built responsive shell components: Collapsible `Sidebar` with user stats, `Header` with health check and Demo Mode controls, floating `CommandPalette` (`Ctrl+K` keypress listeners), and `ChatContainer` drawer with explainability panels.
   - Created main landing `page.tsx` with KPI card widgets and spatiotemporal regional spike tables. Verified frontend build runs clean (`npm run build` succeeds).
 
+### Milestone 6: AI Engine & LangGraph Integration (Phase 6)
+- **Status**: Completed
+- **Accomplished**:
+  - Installed Python AI packages (LangChain, LangGraph, Qdrant-Client, google-generativeai, SentenceTransformers).
+  - Created `database/qdrant_indexer.py` executing vector fact extracts from PostgreSQL into local Qdrant collections.
+  - Built the stateful multi-agent LangGraph workflow (`agent_state.py`, `sql_agent.py` with safety block overrides, `vector_agent.py`, `graph_coordinator.py`).
+  - Added streaming Server-Sent Events (SSE) chat router inside `backend/app/api/api_v1/endpoints/chat.py`. Tested entire backend suite successfully (`10 passed` with zero failures).
+
 ---
 
 ## 4. Next Action Items
 
-1. Define conversational routes and LangGraph state variables inside the `ai-engine/` directory.
-2. Build SQL Agent compiler and Qdrant semantic narrative indexing logic.
-3. Integrate conversational engine routes into the FastAPI streaming backend `/chat/message` endpoints.
+1. Write Neo4j network importer populating suspect/arrest/chargesheet relationship graphs.
+2. Build network analysis APIs (community detection, risk link tracing) in the backend.
+3. Install frontend graph canvas dependencies (e.g. React Flow) and implement the suspect connections graph visualization dashboard.
 
