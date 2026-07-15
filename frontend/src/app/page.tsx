@@ -6,6 +6,7 @@ import Sidebar from "@/components/Sidebar";
 import Header from "@/components/Header";
 import CommandPalette from "@/components/CommandPalette";
 import ChatContainer from "@/components/ChatContainer";
+import NetworkGraph from "@/components/NetworkGraph";
 
 import { 
   TrendingUp, 
@@ -206,17 +207,9 @@ export default function Home() {
             </div>
           )}
 
-          {/* TAB 3: Suspect Relationship Network Placeholder */}
+          {/* TAB 3: Suspect Relationship Network */}
           {currentTab === "network" && (
-            <div className="glass-panel h-[600px] rounded-2xl flex flex-col items-center justify-center space-y-4">
-              <div className="bg-indigo-600/10 border border-indigo-500/20 p-6 rounded-2xl text-indigo-500">
-                <Users size={48} />
-              </div>
-              <h2 className="text-lg font-bold font-display text-gray-200">Suspect Connection Network</h2>
-              <p className="text-xs text-gray-500 text-center max-w-md leading-relaxed">
-                Graph RAG Nodes Visualizer skeleton initialized. We will implement Neo4j community detection, transactional trails, and suspect link maps (via React Flow) in Phase 7.
-              </p>
-            </div>
+            <NetworkGraph />
           )}
 
           {/* TAB 4: GIS Hotspot Map Placeholder */}

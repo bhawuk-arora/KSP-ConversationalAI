@@ -13,3 +13,4 @@ langgraph
 qdrant-client
 sentence-transformers
 google-generativeai
+neo4j

@@ -6,19 +6,15 @@ from app.core.database import get_db
 
 client = TestClient(app)
 
-# Create a mock database session to isolate tests from running PostgreSQL instances
-mock_db = MagicMock()
-# Mock the query chain: db.query().filter().first() returns None (triggering a 404 instead of connection failure)
-mock_db.query.return_value.filter.return_value.first.return_value = None
+import pytest
 
-def override_get_db():
-    try:
-        yield mock_db
-    finally:
-        pass
-
-# Override get_db dependency globally for tests
-app.dependency_overrides[get_db] = override_get_db
+@pytest.fixture(autouse=True)
+def override_db():
+    mock_db = MagicMock()
+    mock_db.query.return_value.filter.return_value.first.return_value = None
+    app.dependency_overrides[get_db] = lambda: mock_db
+    yield
+    app.dependency_overrides.pop(get_db, None)
 
 def test_login_success():
     """Verify that a valid user can successfully obtain a JWT token."""
