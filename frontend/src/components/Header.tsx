@@ -91,9 +91,13 @@ export default function Header({ demoMode, setDemoMode, onSearchClick, user, onL
           <button
             onClick={async () => {
               try {
+                const token = localStorage.getItem('token');
                 const res = await fetch('http://localhost:8000/api/v1/reports/pdf', {
                   method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
+                  headers: {
+                    'Content-Type': 'application/json',
+                    ...(token ? { Authorization: `Bearer ${token}` } : {}),
+                  },
                   body: JSON.stringify({ include_kpis: true, include_recent_cases: true, include_risk_profiles: true }),
                 });
                 if (!res.ok) throw new Error('Failed to generate report');

@@ -29,10 +29,12 @@ export default function ScenarioSimulator() {
     try {
       const steps: Step[] = JSON.parse(stepsJson);
       const payload = { scenario_name: scenarioName, steps };
+      const token = typeof window !== "undefined" ? localStorage.getItem("token") : null;
       const res = await fetch("http://localhost:8000/api/v1/simulation/simulate", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
         },
         body: JSON.stringify(payload),
       });

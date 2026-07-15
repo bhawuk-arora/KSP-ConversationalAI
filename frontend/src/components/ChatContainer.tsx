@@ -39,9 +39,13 @@ export default function ChatContainer({ demoMode }: ChatContainerProps) {
     setMessages(prev => [...prev, { sender: "user", text: userText }]);
 
     try {
+      const token = localStorage.getItem("token");
       const response = await fetch("http://localhost:8000/api/v1/chat/message", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        },
         body: JSON.stringify({ message: userText, session_id: "", demo_mode: demoMode })
       });
       if (!response.body) throw new Error("No response body");

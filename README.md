@@ -1,56 +1,136 @@
 # KSP Crime Intelligence Platform
 
-An enterprise-grade, AI-powered Crime Intelligence and Analytics Platform built for the **Karnataka State Police (KSP)**. This platform replaces fragmented manual spreadsheets with a consolidated, reactive-to-proactive data intelligence framework utilizing PostgreSQL, Neo4j, Qdrant, and stateful LangGraph agents.
+> **Enterprise-grade AI-powered Crime Intelligence & Analytics Platform** built for the **Karnataka State Police (KSP)**. Transforms fragmented manual record-keeping into a proactive, data-driven policing and intelligent suspect profiling system.
+
+[![CI/CD](https://github.com/bhawuk-arora/KSP-ConversationalAI/actions/workflows/ci.yml/badge.svg)](https://github.com/bhawuk-arora/KSP-ConversationalAI/actions/workflows/ci.yml)
 
 ---
 
-## 📂 Project Directory Structure
+## 🚀 Quick Start (Local Dev)
 
-```text
-KSP-ConversationalAI/
-│
-├── docs/                      # Core Design & Project Documentation
-│   ├── PRD.md                 # Product Requirements Document
-│   ├── Architecture.md        # System & Catalyst Architecture
-│   ├── Database.md            # Postgres & Neo4j ER Schema Mapping
-│   ├── AI.md                  # LangGraph, RAG & SQL Agent Specs
-│   ├── Design.md              # UI/UX & Glassmorphism Guidelines
-│   ├── API.md                 # REST API Spec & Request Payloads
-│   ├── Rules.md               # Coding Standards & Guidelines
-│   ├── Phases.md              # 10-Phase Roadmap & Milestones
-│   ├── TechStack.md           # Visual/Stack Choice Justifications
-│   └── Memory.md              # Project Progress & State Ledger
-│
-├── backend/                   # Python FastAPI Application
-├── frontend/                  # React, Next.js, & TypeScript Interface
-├── ai-engine/                 # LangGraph Agent Workflows
-├── analytics/                 # Custom Analytics & Scoring Models
-├── graph-engine/              # Neo4j Graph Queries & Clusters
-├── services/                  # Common/Shared Core Services
-├── infra/                     # Docker, CI/CD, & Server Setup
-├── catalyst/                  # Zoho Catalyst Deployment files
-├── database/                  # SQL Migrations & Database Seeds
-└── README.md                  # Main project index
+### Prerequisites
+- Python 3.11+
+- Node.js 20+
+- Docker & Docker Compose
+
+### 1. Clone & Set Up Environment
+```bash
+git clone https://github.com/bhawuk-arora/KSP-ConversationalAI.git
+cd KSP-ConversationalAI
+cp .env.example .env   # fill in your values
+```
+
+### 2. Start Data Services (Docker)
+```bash
+docker compose up postgres neo4j qdrant redis -d
+```
+
+### 3. Run the Backend
+```bash
+cd backend
+pip install -r requirements.txt
+python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+```
+
+### 4. Run the Frontend
+```bash
+cd frontend
+npm install
+npm run dev
+# → http://localhost:3000
+```
+
+### 5. Full Stack via Docker Compose
+```bash
+docker compose up --build
+# Backend → http://localhost:8000
+# Frontend → http://localhost:3000
 ```
 
 ---
 
-## 📖 System Documentation Index
+## 🔑 Demo Logins
 
-We have established a robust codebase design context inside the `docs/` folder. Read the specific files below for full details:
-
-1. **[Product Requirements (docs/PRD.md)](file:///c:/Users/bhawu/Documents/GitHub/KSP-ConversationalAI/docs/PRD.md)**: Personas (Constables to DGP), detailed functional modules (Conversational AI, GIS heatmaps, Offender profiling, Graph link analysis, Audit logs).
-2. **[Architecture (docs/Architecture.md)](file:///c:/Users/bhawu/Documents/GitHub/KSP-ConversationalAI/docs/Architecture.md)**: System topology, multi-agent flows, Zoho Catalyst serverless integration.
-3. **[Database Mapping (docs/Database.md)](file:///c:/Users/bhawu/Documents/GitHub/KSP-ConversationalAI/docs/Database.md)**: Detailed representation of the KSP FIR ER diagram, including indexes (GiST/GIN), Neo4j nodes/edges, and Qdrant payload schemas.
-4. **[AI & Search Strategy (docs/AI.md)](file:///c:/Users/bhawu/Documents/GitHub/KSP-ConversationalAI/docs/AI.md)**: Multi-agent LangGraph routes, SQL/Cypher code generation, Semantic caching, and Citizen-safe demo mode masking.
-5. **[UI/UX Design System (docs/Design.md)](file:///c:/Users/bhawu/Documents/GitHub/KSP-ConversationalAI/docs/Design.md)**: Dark theme tokens, HSL colors, glassmorphism cards, map aesthetics, and React Flow suspect graphs.
-6. **[API Specifications (docs/API.md)](file:///c:/Users/bhawu/Documents/GitHub/KSP-ConversationalAI/docs/API.md)**: REST interfaces, Bearer JWT RBAC security, Server-Sent Events (SSE) chat streaming, and error handling.
-7. **[Coding Standards (docs/Rules.md)](file:///c:/Users/bhawu/Documents/GitHub/KSP-ConversationalAI/docs/Rules.md)**: DDD modular layouts, SOLID rules, formatting guidelines (snake_case vs camelCase), and mock testing constraints.
-8. **[Project Milestones (docs/Phases.md)](file:///c:/Users/bhawu/Documents/GitHub/KSP-ConversationalAI/docs/Phases.md)**: 10-Phase roadmap timeline detailing the development sequence.
-9. **[Tech Stack Choices (docs/TechStack.md)](file:///c:/Users/bhawu/Documents/GitHub/KSP-ConversationalAI/docs/TechStack.md)**: Technical justifications for FastAPI, PostgreSQL, Neo4j, Qdrant, React Flow, and Zoho Catalyst functions/hosting.
-10. **[State Memory Ledger (docs/Memory.md)](file:///c:/Users/bhawu/Documents/GitHub/KSP-ConversationalAI/docs/Memory.md)**: Progress tracking tool that preserves context across subsequent steps.
+| Role | Email | Password |
+|------|-------|----------|
+| DGP (Full Access) | `dgp@ksp.gov.in` | `password123` |
+| Investigating Officer | `io@ksp.gov.in` | `password123` |
+| Constable (Limited) | `constable@ksp.gov.in` | `password123` |
+| Crime Analyst | `analyst@ksp.gov.in` | `password123` |
 
 ---
 
-## ⚡ Next Steps
-Now that the project environment, architecture, and docs are established in Phase 1, we are ready to transition to **Phase 2: Database Setup & Migration**.
+## 🧩 Platform Features
+
+| Module | Status |
+|--------|--------|
+| ✅ JWT Authentication & RBAC | Complete |
+| ✅ Case Search & Detail APIs | Complete |
+| ✅ Accused / Suspect Profiling | Complete |
+| ✅ AI Conversational Copilot (SSE streaming) | Complete |
+| ✅ Suspect Network Graph (Neo4j) | Complete |
+| ✅ GIS Crime Hotspot Map (Leaflet) | Complete |
+| ✅ PDF Intelligence Reports (ReportLab) | Complete |
+| ✅ Scenario Simulation Engine | Complete |
+| ✅ Demo Mode PII Masking | Complete |
+| ✅ Docker Compose (Full Stack) | Complete |
+| ✅ GitHub Actions CI/CD | Complete |
+
+---
+
+## 📡 API Reference
+
+Interactive docs available at `http://localhost:8000/docs`
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `POST` | `/api/v1/auth/token` | JWT login |
+| `POST` | `/api/v1/chat/message` | AI Copilot (SSE stream) |
+| `GET`  | `/api/v1/cases/search` | Search cases |
+| `GET`  | `/api/v1/cases/{id}` | Case detail |
+| `GET`  | `/api/v1/cases/{id}/timeline` | Case timeline |
+| `GET`  | `/api/v1/cases/{id}/similar` | Similar case finder |
+| `GET`  | `/api/v1/accused/search` | Suspect search |
+| `GET`  | `/api/v1/accused/{id}/history` | Offender history |
+| `GET`  | `/api/v1/network/suspect/{id}` | Co-offender graph |
+| `GET`  | `/api/v1/gis/hotspots` | Crime hotspot coords |
+| `POST` | `/api/v1/reports/pdf` | Generate PDF report |
+| `POST` | `/api/v1/simulation/simulate` | Scenario simulation |
+| `GET`  | `/api/health` | Health check |
+
+---
+
+## 📂 Project Structure
+
+```text
+KSP-ConversationalAI/
+├── .github/workflows/ci.yml   # GitHub Actions CI/CD
+├── docs/                      # Architecture, PRD, API specs (10 docs)
+├── backend/                   # FastAPI — 8 endpoints, JWT, RBAC, PDF
+│   ├── app/api/api_v1/endpoints/
+│   ├── app/models/
+│   ├── app/schemas/
+│   └── Dockerfile
+├── frontend/                  # Next.js 16, TypeScript, Glassmorphism UI
+│   ├── src/app/page.tsx       # Main SPA with 5 tabs
+│   ├── src/components/        # 7 components incl. Chat, Network, GIS
+│   └── Dockerfile
+├── docker-compose.yml         # Full stack: PG, Neo4j, Qdrant, Redis, API, UI
+├── .env.example               # Environment variable template
+└── README.md
+```
+
+---
+
+## 📖 Documentation Index
+
+1. [PRD](docs/PRD.md) — Personas, functional modules
+2. [Architecture](docs/Architecture.md) — System topology, multi-agent flows
+3. [Database](docs/Database.md) — PostgreSQL + Neo4j ER schema
+4. [AI Strategy](docs/AI.md) — LangGraph agents, RAG, SQL generation
+5. [Design System](docs/Design.md) — Dark theme, glassmorphism, UI tokens
+6. [API Spec](docs/API.md) — REST endpoints, JWT, SSE streaming
+7. [Coding Rules](docs/Rules.md) — Standards, DDD, SOLID
+8. [Phases](docs/Phases.md) — 10-phase implementation roadmap
+9. [Tech Stack](docs/TechStack.md) — Stack justifications
+10. [Memory Ledger](docs/Memory.md) — Progress tracking
