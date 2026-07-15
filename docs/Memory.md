@@ -14,9 +14,9 @@ This document maintains the persistent state and context of the KSP Crime Intell
 
 ## 2. Current Development State
 
-- **Current Milestone**: Phase 5 - Frontend Skeleton & Design System
-- **Status**: IN-PROGRESS (Database, backend core, and authentication are fully operational and verified, ready to initialize frontend dashboard skeleton)
-- **Active Phase**: Phase 5
+- **Current Milestone**: Phase 6 - AI Engine & LangGraph Integration
+- **Status**: IN-PROGRESS (Database, backend REST API, Auth/RBAC, and frontend skeleton dashboard are completed and verified, ready to implement conversational LangGraph flow)
+- **Active Phase**: Phase 6
 
 ---
 
@@ -53,11 +53,20 @@ This document maintains the persistent state and context of the KSP Crime Intell
   - Built a mock authorization token router (`POST /api/v1/auth/token`) supporting Swagger logins.
   - Wrote test suite `backend/tests/test_auth.py` verifying JWT role security with mocked DB sessions. Running `python -m pytest` yields 7/7 passes.
 
+### Milestone 5: Frontend Skeleton & Design System (Phase 5)
+- **Status**: Completed
+- **Accomplished**:
+  - Initialized TSX Next.js project skeleton using TypeScript, Tailwind v4, and ESLint (App Router mode).
+  - Configured `globals.css` theme variables to declare glassmorphism card templates and dark mode background HSL color tokens.
+  - Loaded `Outfit` and `Inter` Google fonts dynamically inside the root `layout.tsx`.
+  - Built responsive shell components: Collapsible `Sidebar` with user stats, `Header` with health check and Demo Mode controls, floating `CommandPalette` (`Ctrl+K` keypress listeners), and `ChatContainer` drawer with explainability panels.
+  - Created main landing `page.tsx` with KPI card widgets and spatiotemporal regional spike tables. Verified frontend build runs clean (`npm run build` succeeds).
+
 ---
 
 ## 4. Next Action Items
 
-1. Initialize Next.js project skeleton inside the `frontend/` directory.
-2. Install tailwindcss, shadcn/ui components, and setup Inter & Outfit typography theme configuration.
-3. Build the core dashboard shell layout including sidebars, command palette triggers, and chat container components.
+1. Define conversational routes and LangGraph state variables inside the `ai-engine/` directory.
+2. Build SQL Agent compiler and Qdrant semantic narrative indexing logic.
+3. Integrate conversational engine routes into the FastAPI streaming backend `/chat/message` endpoints.
 
