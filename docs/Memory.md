@@ -14,9 +14,9 @@ This document maintains the persistent state and context of the KSP Crime Intell
 
 ## 2. Current Development State
 
-- **Current Milestone**: Phase 3 - Backend Core Development
-- **Status**: IN-PROGRESS (Database setup and data seeding complete, FastAPI skeleton initialization pending)
-- **Active Phase**: Phase 3
+- **Current Milestone**: Phase 5 - Frontend Skeleton & Design System
+- **Status**: IN-PROGRESS (Database, backend core, and authentication are fully operational and verified, ready to initialize frontend dashboard skeleton)
+- **Active Phase**: Phase 5
 
 ---
 
@@ -38,11 +38,26 @@ This document maintains the persistent state and context of the KSP Crime Intell
   - Authored `database/import_csv_data.py` to ingest the entire dataset in seconds using psycopg2 `copy_expert` COPY.
   - Configured a local stack in `docker-compose.yml` (PostGIS, Neo4j, Qdrant, Redis).
 
+### Milestone 3: Backend Core Development (Phase 3)
+- **Status**: Completed
+- **Accomplished**:
+  - Initialized FastAPI backend app layout, config loader, and ORM database connection pools.
+  - Mapped all 26 tables into a unified ORM schema file `backend/app/models/ksp_models.py` with full relation loading.
+  - Built case search, timeline compilation, and accused history REST routers.
+
+### Milestone 4: Authentication & RBAC (Phase 4)
+- **Status**: Completed
+- **Accomplished**:
+  - Integrated auth requirements (`PyJWT`, `passlib[bcrypt]`) supporting Python 3.14.
+  - Authored JWT helper utils, schemas, and API dependencies enforcing RBAC scopes (Supervisor, Investigator, Analyst, Constable).
+  - Built a mock authorization token router (`POST /api/v1/auth/token`) supporting Swagger logins.
+  - Wrote test suite `backend/tests/test_auth.py` verifying JWT role security with mocked DB sessions. Running `python -m pytest` yields 7/7 passes.
+
 ---
 
 ## 4. Next Action Items
 
-1. Initialize the FastAPI backend application structure inside the `backend/` directory.
-2. Setup database connection configuration and SQLAlchemy ORM models mapping all KSP tables.
-3. Build base routers and search endpoints for CRUD actions on case records.
+1. Initialize Next.js project skeleton inside the `frontend/` directory.
+2. Install tailwindcss, shadcn/ui components, and setup Inter & Outfit typography theme configuration.
+3. Build the core dashboard shell layout including sidebars, command palette triggers, and chat container components.
 
