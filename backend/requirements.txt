@@ -8,3 +8,8 @@ pytest
 httpx
 PyJWT
 passlib[bcrypt]
+langchain
+langgraph
+qdrant-client
+sentence-transformers
+google-generativeai
