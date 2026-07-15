@@ -1,0 +1,342 @@
+UnitID,UnitName,TypeID,ParentUnit,NationalityID,StateID,DistrictID,Active
+1,"Rural Police Station, District-1-1",1,,,1,1,1
+2,"City Police Station, District-1-2",1,,,1,1,1
+3,"North Police Station, District-1-3",1,,,1,1,1
+4,"West Police Station, District-1-4",1,,,1,1,1
+5,"West Police Station, District-1-5",1,,,1,1,1
+6,"East Police Station, District-1-6",1,,,1,1,1
+7,"Rural Police Station, District-1-7",1,,,1,1,1
+8,"Industrial Area Police Station, District-1-8",1,,,1,1,1
+9,"Rural Police Station, District-1-9",1,,,1,1,1
+10,"Old Town Police Station, District-1-10",1,,,1,1,1
+11,"Central Police Station, District-1-11",1,,,1,1,1
+12,"City Police Station, District-1-12",1,,,1,1,1
+13,"City Police Station, District-1-13",1,,,1,1,1
+14,"Rural Police Station, District-1-14",1,,,1,1,1
+15,"West Police Station, District-1-15",1,,,1,1,1
+16,"West Police Station, District-1-16",1,,,1,1,1
+17,"Industrial Area Police Station, District-1-17",1,,,1,1,1
+18,"Old Town Police Station, District-1-18",1,,,1,1,1
+19,"City Police Station, District-1-19",1,,,1,1,1
+20,"Industrial Area Police Station, District-1-20",1,,,1,1,1
+21,"West Police Station, District-1-21",1,,,1,1,1
+22,"Industrial Area Police Station, District-1-22",1,,,1,1,1
+23,"Central Police Station, District-1-23",1,,,1,1,1
+24,"West Police Station, District-1-24",1,,,1,1,1
+25,"Cantonment Police Station, District-1-25",1,,,1,1,1
+26,"North Police Station, District-2-1",1,,,1,2,1
+27,"City Police Station, District-2-2",1,,,1,2,1
+28,"East Police Station, District-2-3",1,,,1,2,1
+29,"Central Police Station, District-2-4",1,,,1,2,1
+30,"South Police Station, District-2-5",1,,,1,2,1
+31,"North Police Station, District-2-6",1,,,1,2,1
+32,"East Police Station, District-2-7",1,,,1,2,1
+33,"West Police Station, District-2-8",1,,,1,2,1
+34,"South Police Station, District-2-9",1,,,1,2,1
+35,"Rural Police Station, District-2-10",1,,,1,2,1
+36,"Rural Police Station, District-2-11",1,,,1,2,1
+37,"Central Police Station, District-2-12",1,,,1,2,1
+38,"Rural Police Station, District-2-13",1,,,1,2,1
+39,"South Police Station, District-2-14",1,,,1,2,1
+40,"South Police Station, District-2-15",1,,,1,2,1
+41,"Old Town Police Station, District-2-16",1,,,1,2,1
+42,"North Police Station, District-2-17",1,,,1,2,1
+43,"City Police Station, District-2-18",1,,,1,2,1
+44,"Cantonment Police Station, District-2-19",1,,,1,2,1
+45,"Industrial Area Police Station, District-2-20",1,,,1,2,1
+46,"Rural Police Station, District-2-21",1,,,1,2,1
+47,"Central Police Station, District-2-22",1,,,1,2,1
+48,"Rural Police Station, District-2-23",1,,,1,2,1
+49,"Industrial Area Police Station, District-2-24",1,,,1,2,1
+50,"Old Town Police Station, District-3-1",1,,,1,3,1
+51,"South Police Station, District-3-2",1,,,1,3,1
+52,"Old Town Police Station, District-3-3",1,,,1,3,1
+53,"West Police Station, District-3-4",1,,,1,3,1
+54,"Rural Police Station, District-3-5",1,,,1,3,1
+55,"City Police Station, District-3-6",1,,,1,3,1
+56,"West Police Station, District-3-7",1,,,1,3,1
+57,"North Police Station, District-3-8",1,,,1,3,1
+58,"Rural Police Station, District-3-9",1,,,1,3,1
+59,"West Police Station, District-3-10",1,,,1,3,1
+60,"Rural Police Station, District-3-11",1,,,1,3,1
+61,"Central Police Station, District-3-12",1,,,1,3,1
+62,"North Police Station, District-3-13",1,,,1,3,1
+63,"Cantonment Police Station, District-3-14",1,,,1,3,1
+64,"South Police Station, District-3-15",1,,,1,3,1
+65,"East Police Station, District-3-16",1,,,1,3,1
+66,"South Police Station, District-3-17",1,,,1,3,1
+67,"South Police Station, District-3-18",1,,,1,3,1
+68,"West Police Station, District-3-19",1,,,1,3,1
+69,"North Police Station, District-4-1",1,,,1,4,1
+70,"Rural Police Station, District-4-2",1,,,1,4,1
+71,"Old Town Police Station, District-4-3",1,,,1,4,1
+72,"East Police Station, District-4-4",1,,,1,4,1
+73,"Industrial Area Police Station, District-4-5",1,,,1,4,1
+74,"West Police Station, District-4-6",1,,,1,4,1
+75,"East Police Station, District-4-7",1,,,1,4,1
+76,"Cantonment Police Station, District-4-8",1,,,1,4,1
+77,"Central Police Station, District-4-9",1,,,1,4,1
+78,"North Police Station, District-4-10",1,,,1,4,1
+79,"Industrial Area Police Station, District-4-11",1,,,1,4,1
+80,"West Police Station, District-4-12",1,,,1,4,1
+81,"South Police Station, District-4-13",1,,,1,4,1
+82,"City Police Station, District-4-14",1,,,1,4,1
+83,"West Police Station, District-4-15",1,,,1,4,1
+84,"City Police Station, District-4-16",1,,,1,4,1
+85,"South Police Station, District-4-17",1,,,1,4,1
+86,"Central Police Station, District-4-18",1,,,1,4,1
+87,"North Police Station, District-4-19",1,,,1,4,1
+88,"Rural Police Station, District-4-20",1,,,1,4,1
+89,"West Police Station, District-4-21",1,,,1,4,1
+90,"Old Town Police Station, District-4-22",1,,,1,4,1
+91,"South Police Station, District-4-23",1,,,1,4,1
+92,"West Police Station, District-4-24",1,,,1,4,1
+93,"Cantonment Police Station, District-4-25",1,,,1,4,1
+94,"Cantonment Police Station, District-5-1",1,,,1,5,1
+95,"East Police Station, District-5-2",1,,,1,5,1
+96,"North Police Station, District-5-3",1,,,1,5,1
+97,"East Police Station, District-5-4",1,,,1,5,1
+98,"West Police Station, District-5-5",1,,,1,5,1
+99,"Industrial Area Police Station, District-5-6",1,,,1,5,1
+100,"Industrial Area Police Station, District-5-7",1,,,1,5,1
+101,"North Police Station, District-5-8",1,,,1,5,1
+102,"Old Town Police Station, District-5-9",1,,,1,5,1
+103,"Central Police Station, District-5-10",1,,,1,5,1
+104,"Old Town Police Station, District-5-11",1,,,1,5,1
+105,"Central Police Station, District-5-12",1,,,1,5,1
+106,"South Police Station, District-5-13",1,,,1,5,1
+107,"West Police Station, District-5-14",1,,,1,5,1
+108,"East Police Station, District-5-15",1,,,1,5,1
+109,"Industrial Area Police Station, District-5-16",1,,,1,5,1
+110,"Cantonment Police Station, District-5-17",1,,,1,5,1
+111,"Rural Police Station, District-5-18",1,,,1,5,1
+112,"City Police Station, District-5-19",1,,,1,5,1
+113,"Rural Police Station, District-5-20",1,,,1,5,1
+114,"East Police Station, District-5-21",1,,,1,5,1
+115,"East Police Station, District-6-1",1,,,1,6,1
+116,"Central Police Station, District-6-2",1,,,1,6,1
+117,"Old Town Police Station, District-6-3",1,,,1,6,1
+118,"Rural Police Station, District-6-4",1,,,1,6,1
+119,"Central Police Station, District-6-5",1,,,1,6,1
+120,"Central Police Station, District-6-6",1,,,1,6,1
+121,"Old Town Police Station, District-6-7",1,,,1,6,1
+122,"Cantonment Police Station, District-6-8",1,,,1,6,1
+123,"Industrial Area Police Station, District-6-9",1,,,1,6,1
+124,"North Police Station, District-6-10",1,,,1,6,1
+125,"Industrial Area Police Station, District-6-11",1,,,1,6,1
+126,"City Police Station, District-6-12",1,,,1,6,1
+127,"Rural Police Station, District-6-13",1,,,1,6,1
+128,"Industrial Area Police Station, District-6-14",1,,,1,6,1
+129,"North Police Station, District-6-15",1,,,1,6,1
+130,"South Police Station, District-6-16",1,,,1,6,1
+131,"Rural Police Station, District-6-17",1,,,1,6,1
+132,"North Police Station, District-6-18",1,,,1,6,1
+133,"Central Police Station, District-6-19",1,,,1,6,1
+134,"East Police Station, District-6-20",1,,,1,6,1
+135,"Cantonment Police Station, District-6-21",1,,,1,6,1
+136,"City Police Station, District-6-22",1,,,1,6,1
+137,"North Police Station, District-6-23",1,,,1,6,1
+138,"Industrial Area Police Station, District-6-24",1,,,1,6,1
+139,"East Police Station, District-6-25",1,,,1,6,1
+140,"Rural Police Station, District-7-1",1,,,1,7,1
+141,"North Police Station, District-7-2",1,,,1,7,1
+142,"Industrial Area Police Station, District-7-3",1,,,1,7,1
+143,"Old Town Police Station, District-7-4",1,,,1,7,1
+144,"West Police Station, District-7-5",1,,,1,7,1
+145,"East Police Station, District-7-6",1,,,1,7,1
+146,"South Police Station, District-7-7",1,,,1,7,1
+147,"East Police Station, District-7-8",1,,,1,7,1
+148,"Industrial Area Police Station, District-7-9",1,,,1,7,1
+149,"Industrial Area Police Station, District-7-10",1,,,1,7,1
+150,"City Police Station, District-7-11",1,,,1,7,1
+151,"Old Town Police Station, District-7-12",1,,,1,7,1
+152,"South Police Station, District-7-13",1,,,1,7,1
+153,"Cantonment Police Station, District-7-14",1,,,1,7,1
+154,"City Police Station, District-7-15",1,,,1,7,1
+155,"Rural Police Station, District-7-16",1,,,1,7,1
+156,"South Police Station, District-7-17",1,,,1,7,1
+157,"North Police Station, District-7-18",1,,,1,7,1
+158,"West Police Station, District-7-19",1,,,1,7,1
+159,"City Police Station, District-7-20",1,,,1,7,1
+160,"West Police Station, District-7-21",1,,,1,7,1
+161,"Old Town Police Station, District-7-22",1,,,1,7,1
+162,"Rural Police Station, District-7-23",1,,,1,7,1
+163,"Cantonment Police Station, District-8-1",1,,,1,8,1
+164,"Rural Police Station, District-8-2",1,,,1,8,1
+165,"Industrial Area Police Station, District-8-3",1,,,1,8,1
+166,"East Police Station, District-8-4",1,,,1,8,1
+167,"East Police Station, District-8-5",1,,,1,8,1
+168,"Cantonment Police Station, District-8-6",1,,,1,8,1
+169,"Industrial Area Police Station, District-8-7",1,,,1,8,1
+170,"East Police Station, District-8-8",1,,,1,8,1
+171,"North Police Station, District-8-9",1,,,1,8,1
+172,"Industrial Area Police Station, District-8-10",1,,,1,8,1
+173,"Old Town Police Station, District-8-11",1,,,1,8,1
+174,"Central Police Station, District-8-12",1,,,1,8,1
+175,"West Police Station, District-8-13",1,,,1,8,1
+176,"Industrial Area Police Station, District-8-14",1,,,1,8,1
+177,"West Police Station, District-8-15",1,,,1,8,1
+178,"North Police Station, District-8-16",1,,,1,8,1
+179,"South Police Station, District-9-1",1,,,1,9,1
+180,"Cantonment Police Station, District-9-2",1,,,1,9,1
+181,"Industrial Area Police Station, District-9-3",1,,,1,9,1
+182,"Cantonment Police Station, District-9-4",1,,,1,9,1
+183,"Rural Police Station, District-9-5",1,,,1,9,1
+184,"West Police Station, District-9-6",1,,,1,9,1
+185,"West Police Station, District-9-7",1,,,1,9,1
+186,"Rural Police Station, District-9-8",1,,,1,9,1
+187,"South Police Station, District-9-9",1,,,1,9,1
+188,"City Police Station, District-9-10",1,,,1,9,1
+189,"Old Town Police Station, District-9-11",1,,,1,9,1
+190,"Industrial Area Police Station, District-9-12",1,,,1,9,1
+191,"West Police Station, District-9-13",1,,,1,9,1
+192,"Old Town Police Station, District-9-14",1,,,1,9,1
+193,"West Police Station, District-9-15",1,,,1,9,1
+194,"City Police Station, District-9-16",1,,,1,9,1
+195,"Rural Police Station, District-9-17",1,,,1,9,1
+196,"City Police Station, District-9-18",1,,,1,9,1
+197,"West Police Station, District-9-19",1,,,1,9,1
+198,"Rural Police Station, District-9-20",1,,,1,9,1
+199,"City Police Station, District-9-21",1,,,1,9,1
+200,"Rural Police Station, District-10-1",1,,,1,10,1
+201,"Industrial Area Police Station, District-10-2",1,,,1,10,1
+202,"West Police Station, District-10-3",1,,,1,10,1
+203,"North Police Station, District-10-4",1,,,1,10,1
+204,"Cantonment Police Station, District-10-5",1,,,1,10,1
+205,"West Police Station, District-10-6",1,,,1,10,1
+206,"Industrial Area Police Station, District-10-7",1,,,1,10,1
+207,"East Police Station, District-10-8",1,,,1,10,1
+208,"Old Town Police Station, District-10-9",1,,,1,10,1
+209,"Old Town Police Station, District-10-10",1,,,1,10,1
+210,"Cantonment Police Station, District-10-11",1,,,1,10,1
+211,"West Police Station, District-10-12",1,,,1,10,1
+212,"Cantonment Police Station, District-10-13",1,,,1,10,1
+213,"Central Police Station, District-10-14",1,,,1,10,1
+214,"West Police Station, District-10-15",1,,,1,10,1
+215,"Rural Police Station, District-10-16",1,,,1,10,1
+216,"Rural Police Station, District-10-17",1,,,1,10,1
+217,"Central Police Station, District-10-18",1,,,1,10,1
+218,"South Police Station, District-10-19",1,,,1,10,1
+219,"Central Police Station, District-10-20",1,,,1,10,1
+220,"Cantonment Police Station, District-11-1",1,,,1,11,1
+221,"City Police Station, District-11-2",1,,,1,11,1
+222,"Rural Police Station, District-11-3",1,,,1,11,1
+223,"City Police Station, District-11-4",1,,,1,11,1
+224,"Central Police Station, District-11-5",1,,,1,11,1
+225,"South Police Station, District-11-6",1,,,1,11,1
+226,"Rural Police Station, District-11-7",1,,,1,11,1
+227,"West Police Station, District-11-8",1,,,1,11,1
+228,"West Police Station, District-11-9",1,,,1,11,1
+229,"West Police Station, District-11-10",1,,,1,11,1
+230,"Industrial Area Police Station, District-11-11",1,,,1,11,1
+231,"Cantonment Police Station, District-11-12",1,,,1,11,1
+232,"East Police Station, District-11-13",1,,,1,11,1
+233,"Central Police Station, District-11-14",1,,,1,11,1
+234,"East Police Station, District-11-15",1,,,1,11,1
+235,"North Police Station, District-11-16",1,,,1,11,1
+236,"Cantonment Police Station, District-11-17",1,,,1,11,1
+237,"West Police Station, District-11-18",1,,,1,11,1
+238,"Rural Police Station, District-11-19",1,,,1,11,1
+239,"Cantonment Police Station, District-11-20",1,,,1,11,1
+240,"Industrial Area Police Station, District-11-21",1,,,1,11,1
+241,"City Police Station, District-12-1",1,,,1,12,1
+242,"Industrial Area Police Station, District-12-2",1,,,1,12,1
+243,"City Police Station, District-12-3",1,,,1,12,1
+244,"Rural Police Station, District-12-4",1,,,1,12,1
+245,"West Police Station, District-12-5",1,,,1,12,1
+246,"East Police Station, District-12-6",1,,,1,12,1
+247,"Central Police Station, District-12-7",1,,,1,12,1
+248,"Cantonment Police Station, District-12-8",1,,,1,12,1
+249,"Cantonment Police Station, District-12-9",1,,,1,12,1
+250,"West Police Station, District-12-10",1,,,1,12,1
+251,"Central Police Station, District-12-11",1,,,1,12,1
+252,"City Police Station, District-12-12",1,,,1,12,1
+253,"East Police Station, District-12-13",1,,,1,12,1
+254,"Central Police Station, District-12-14",1,,,1,12,1
+255,"City Police Station, District-12-15",1,,,1,12,1
+256,"Central Police Station, District-12-16",1,,,1,12,1
+257,"Cantonment Police Station, District-13-1",1,,,1,13,1
+258,"North Police Station, District-13-2",1,,,1,13,1
+259,"Central Police Station, District-13-3",1,,,1,13,1
+260,"Industrial Area Police Station, District-13-4",1,,,1,13,1
+261,"Cantonment Police Station, District-13-5",1,,,1,13,1
+262,"East Police Station, District-13-6",1,,,1,13,1
+263,"West Police Station, District-13-7",1,,,1,13,1
+264,"North Police Station, District-13-8",1,,,1,13,1
+265,"West Police Station, District-13-9",1,,,1,13,1
+266,"City Police Station, District-13-10",1,,,1,13,1
+267,"Old Town Police Station, District-13-11",1,,,1,13,1
+268,"Industrial Area Police Station, District-13-12",1,,,1,13,1
+269,"City Police Station, District-13-13",1,,,1,13,1
+270,"South Police Station, District-13-14",1,,,1,13,1
+271,"City Police Station, District-13-15",1,,,1,13,1
+272,"City Police Station, District-13-16",1,,,1,13,1
+273,"Old Town Police Station, District-13-17",1,,,1,13,1
+274,"Cantonment Police Station, District-13-18",1,,,1,13,1
+275,"Industrial Area Police Station, District-13-19",1,,,1,13,1
+276,"East Police Station, District-14-1",1,,,1,14,1
+277,"City Police Station, District-14-2",1,,,1,14,1
+278,"Industrial Area Police Station, District-14-3",1,,,1,14,1
+279,"Rural Police Station, District-14-4",1,,,1,14,1
+280,"East Police Station, District-14-5",1,,,1,14,1
+281,"Rural Police Station, District-14-6",1,,,1,14,1
+282,"Old Town Police Station, District-14-7",1,,,1,14,1
+283,"Rural Police Station, District-14-8",1,,,1,14,1
+284,"West Police Station, District-14-9",1,,,1,14,1
+285,"Central Police Station, District-14-10",1,,,1,14,1
+286,"Rural Police Station, District-14-11",1,,,1,14,1
+287,"Old Town Police Station, District-14-12",1,,,1,14,1
+288,"West Police Station, District-14-13",1,,,1,14,1
+289,"Old Town Police Station, District-14-14",1,,,1,14,1
+290,"Old Town Police Station, District-14-15",1,,,1,14,1
+291,"City Police Station, District-14-16",1,,,1,14,1
+292,"Old Town Police Station, District-14-17",1,,,1,14,1
+293,"Rural Police Station, District-14-18",1,,,1,14,1
+294,"Central Police Station, District-14-19",1,,,1,14,1
+295,"Old Town Police Station, District-14-20",1,,,1,14,1
+296,"Old Town Police Station, District-14-21",1,,,1,14,1
+297,"Industrial Area Police Station, District-14-22",1,,,1,14,1
+298,"South Police Station, District-14-23",1,,,1,14,1
+299,"West Police Station, District-15-1",1,,,1,15,1
+300,"South Police Station, District-15-2",1,,,1,15,1
+301,"West Police Station, District-15-3",1,,,1,15,1
+302,"North Police Station, District-15-4",1,,,1,15,1
+303,"Central Police Station, District-15-5",1,,,1,15,1
+304,"East Police Station, District-15-6",1,,,1,15,1
+305,"North Police Station, District-15-7",1,,,1,15,1
+306,"Cantonment Police Station, District-15-8",1,,,1,15,1
+307,"South Police Station, District-15-9",1,,,1,15,1
+308,"Rural Police Station, District-15-10",1,,,1,15,1
+309,"City Police Station, District-15-11",1,,,1,15,1
+310,"Cantonment Police Station, District-15-12",1,,,1,15,1
+311,"Old Town Police Station, District-15-13",1,,,1,15,1
+312,"Old Town Police Station, District-15-14",1,,,1,15,1
+313,"Rural Police Station, District-15-15",1,,,1,15,1
+314,"Rural Police Station, District-15-16",1,,,1,15,1
+315,"Industrial Area Police Station, District-15-17",1,,,1,15,1
+316,"West Police Station, District-15-18",1,,,1,15,1
+317,"Industrial Area Police Station, District-15-19",1,,,1,15,1
+318,"East Police Station, District-16-1",1,,,1,16,1
+319,"South Police Station, District-16-2",1,,,1,16,1
+320,"Rural Police Station, District-16-3",1,,,1,16,1
+321,"West Police Station, District-16-4",1,,,1,16,1
+322,"South Police Station, District-16-5",1,,,1,16,1
+323,"North Police Station, District-16-6",1,,,1,16,1
+324,"East Police Station, District-16-7",1,,,1,16,1
+325,"Cantonment Police Station, District-16-8",1,,,1,16,1
+326,"Industrial Area Police Station, District-16-9",1,,,1,16,1
+327,"North Police Station, District-16-10",1,,,1,16,1
+328,"Old Town Police Station, District-16-11",1,,,1,16,1
+329,"Industrial Area Police Station, District-16-12",1,,,1,16,1
+330,"City Police Station, District-16-13",1,,,1,16,1
+331,"Industrial Area Police Station, District-16-14",1,,,1,16,1
+332,"North Police Station, District-16-15",1,,,1,16,1
+333,"Rural Police Station, District-16-16",1,,,1,16,1
+334,"East Police Station, District-16-17",1,,,1,16,1
+335,"North Police Station, District-16-18",1,,,1,16,1
+336,"Rural Police Station, District-16-19",1,,,1,16,1
+337,Circle Office District-1,2,,,1,1,1
+338,Circle Office District-2,2,,,1,2,1
+339,Circle Office District-3,2,,,1,3,1
+340,Circle Office District-4,2,,,1,4,1
+341,Circle Office District-5,2,,,1,5,1

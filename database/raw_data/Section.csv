@@ -1,0 +1,30 @@
+ActCode,SectionCode,SectionDescription,Active
+IPC,302,Murder,1
+IPC,307,Attempt to Murder,1
+IPC,376,Rape,1
+IPC,392,Robbery,1
+IPC,420,Cheating,1
+IPC,354,Assault on Woman,1
+IPC,324,Voluntarily Causing Hurt,1
+IPC,363,Kidnapping,1
+IPC,447,Criminal Trespass,1
+IPC,498A,Cruelty by Husband,1
+BNS,103,Murder,1
+BNS,109,Attempt to Murder,1
+BNS,64,Rape,1
+BNS,305,Theft,1
+BNS,318,Cheating,1
+NDPS,20,Possession of Cannabis,1
+NDPS,21,Possession of Manufactured Drugs,1
+POCSO,4,Penetrative Sexual Assault,1
+POCSO,8,Sexual Assault,1
+ARMS,25,Punishment for Possessing Arms,1
+ARMS,27,Use of Arms,1
+MV,184,Dangerous Driving,1
+MV,185,Drunken Driving,1
+IT,66C,Identity Theft,1
+IT,66D,Cheating by Personation,1
+DOWRY,3,Giving/Taking Dowry,1
+DOWRY,4,Demanding Dowry,1
+EXCISE,32,Illegal Possession of Liquor,1
+SCST,3(1),Atrocity against SC/ST,1

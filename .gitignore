@@ -1,0 +1,29 @@
+# Python virtual environments & caching
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+env/
+.env
+
+# NodeJS dependencies & build folders
+node_modules/
+.next/
+out/
+build/
+dist/
+
+# Raw zip archives
+*.zip
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# Logs & temp files
+*.log
+.gemini/
+.agents/
+.vscode/

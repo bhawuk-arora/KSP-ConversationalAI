@@ -1,0 +1,23 @@
+DistrictID,DistrictName,StateID,Active
+1,Bengaluru Urban,1,1
+2,Mysuru,1,1
+3,Mangaluru,1,1
+4,Belagavi,1,1
+5,Kalaburagi,1,1
+6,Hubballi-Dharwad,1,1
+7,Tumakuru,1,1
+8,Shivamogga,1,1
+9,Ballari,1,1
+10,Davanagere,1,1
+11,Bidar,1,1
+12,Raichur,1,1
+13,Hassan,1,1
+14,Mandya,1,1
+15,Udupi,1,1
+16,Chikkamagaluru,1,1
+17,Chennai,2,1
+18,Coimbatore,2,1
+19,Pune,3,1
+20,Mumbai City,3,1
+21,Vijayawada,4,1
+22,Kochi,5,1

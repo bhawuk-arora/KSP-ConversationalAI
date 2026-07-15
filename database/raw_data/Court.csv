@@ -1,0 +1,49 @@
+CourtID,CourtName,DistrictID,StateID,Active
+1,"District & Sessions Court, District-1",1,1,1
+2,"Civil Judge Court, District-1",1,1,1
+3,"JMFC Court, District-1",1,1,1
+4,"District & Sessions Court, District-2",2,1,1
+5,"Civil Judge Court, District-2",2,1,1
+6,"JMFC Court, District-2",2,1,1
+7,"District & Sessions Court, District-3",3,1,1
+8,"Civil Judge Court, District-3",3,1,1
+9,"JMFC Court, District-3",3,1,1
+10,"District & Sessions Court, District-4",4,1,1
+11,"Civil Judge Court, District-4",4,1,1
+12,"JMFC Court, District-4",4,1,1
+13,"District & Sessions Court, District-5",5,1,1
+14,"Civil Judge Court, District-5",5,1,1
+15,"JMFC Court, District-5",5,1,1
+16,"District & Sessions Court, District-6",6,1,1
+17,"Civil Judge Court, District-6",6,1,1
+18,"JMFC Court, District-6",6,1,1
+19,"District & Sessions Court, District-7",7,1,1
+20,"Civil Judge Court, District-7",7,1,1
+21,"JMFC Court, District-7",7,1,1
+22,"District & Sessions Court, District-8",8,1,1
+23,"Civil Judge Court, District-8",8,1,1
+24,"JMFC Court, District-8",8,1,1
+25,"District & Sessions Court, District-9",9,1,1
+26,"Civil Judge Court, District-9",9,1,1
+27,"JMFC Court, District-9",9,1,1
+28,"District & Sessions Court, District-10",10,1,1
+29,"Civil Judge Court, District-10",10,1,1
+30,"JMFC Court, District-10",10,1,1
+31,"District & Sessions Court, District-11",11,1,1
+32,"Civil Judge Court, District-11",11,1,1
+33,"JMFC Court, District-11",11,1,1
+34,"District & Sessions Court, District-12",12,1,1
+35,"Civil Judge Court, District-12",12,1,1
+36,"JMFC Court, District-12",12,1,1
+37,"District & Sessions Court, District-13",13,1,1
+38,"Civil Judge Court, District-13",13,1,1
+39,"JMFC Court, District-13",13,1,1
+40,"District & Sessions Court, District-14",14,1,1
+41,"Civil Judge Court, District-14",14,1,1
+42,"JMFC Court, District-14",14,1,1
+43,"District & Sessions Court, District-15",15,1,1
+44,"Civil Judge Court, District-15",15,1,1
+45,"JMFC Court, District-15",15,1,1
+46,"District & Sessions Court, District-16",16,1,1
+47,"Civil Judge Court, District-16",16,1,1
+48,"JMFC Court, District-16",16,1,1
