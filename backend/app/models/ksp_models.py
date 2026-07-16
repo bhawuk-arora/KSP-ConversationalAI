@@ -366,3 +366,9 @@ class ChargesheetDetails(Base):
     )
 
     case = relationship("CaseMaster", back_populates="chargesheets")
+
+
+# Automatically map mixedCase attributes to lowercase database columns
+for table in Base.metadata.tables.values():
+    for column in table.columns:
+        column.name = column.name.lower()
