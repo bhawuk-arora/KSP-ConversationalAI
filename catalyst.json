@@ -1,0 +1,11 @@
+{
+  "project_id": "",
+  "client": {
+    "source": "frontend/out",
+    "name": "ksp-client"
+  },
+  "appsail": {
+    "source": "backend",
+    "name": "ksp-backend"
+  }
+}

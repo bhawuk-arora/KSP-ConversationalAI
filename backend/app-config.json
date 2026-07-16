@@ -1,0 +1,11 @@
+{
+  "command": "python -m uvicorn app.main:app --host 0.0.0.0 --port $PORT",
+  "buildPath": ".",
+  "stack": "python3.11",
+  "memory": 1024,
+  "env_variables": {
+    "DATABASE_URL": "postgresql://postgres:postgres@localhost:5433/ksp_db",
+    "SECRET_KEY": "ksp_jwt_secret_key_change_me_in_production",
+    "ALGORITHM": "HS256"
+  }
+}
