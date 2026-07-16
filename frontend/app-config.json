@@ -1,0 +1,9 @@
+{
+  "command": "npm run start -- -p $PORT",
+  "buildPath": ".",
+  "stack": "node22",
+  "memory": 1024,
+  "env_variables": {
+    "NEXT_PUBLIC_API_URL": "http://localhost:8000"
+  }
+}
