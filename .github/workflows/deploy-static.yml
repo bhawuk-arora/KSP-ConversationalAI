@@ -1,0 +1,40 @@
+name: Deploy Static Frontend
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Dependencies
+        run: |
+          cd frontend
+          npm ci
+
+      - name: Build Next.js Static Pages
+        run: |
+          cd frontend
+          npm run build
+          # Create client-package.json in out folder
+          cp client-package.json out/client-package.json
+
+      - name: Push static files to static-deploy branch
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: frontend/out
+          branch: static-deploy
+          clean: true
