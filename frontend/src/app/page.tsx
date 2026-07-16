@@ -10,19 +10,46 @@ import ChatContainer from "@/components/ChatContainer";
 import NetworkGraph from "@/components/NetworkGraph";
 import GisMap from "@/components/GisMap";
 
-import { 
-  TrendingUp, 
-  ShieldAlert, 
-  Users, 
-  Clock, 
-  MapPin, 
-  Calendar, 
-  UserPlus, 
+import {
+  TrendingUp,
+  ShieldAlert,
+  Users,
+  Clock,
+  Calendar,
+  UserPlus,
   CheckCircle,
   Activity,
   AlertTriangle,
-  MessageSquare
+  MessageSquare,
+  ShieldOff,
 } from "lucide-react";
+
+const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
+
+// Role access matrix for page-level tab guards
+const TAB_ROLES: Record<string, string[]> = {
+  dashboard:  ["Constable", "Investigator", "Analyst", "Supervisor"],
+  copilot:    ["Constable", "Investigator", "Analyst", "Supervisor"],
+  network:    ["Investigator", "Analyst", "Supervisor"],
+  map:        ["Investigator", "Analyst", "Supervisor"],
+  simulation: ["Supervisor"],
+};
+
+function AccessDenied({ tab, required }: { tab: string; required: string }) {
+  return (
+    <div className="h-full flex flex-col items-center justify-center py-24 space-y-4 text-center">
+      <div className="bg-red-500/10 border border-red-500/20 p-5 rounded-2xl text-red-500">
+        <ShieldOff size={40} />
+      </div>
+      <h2 className="text-lg font-bold font-display text-gray-200">Access Restricted</h2>
+      <p className="text-xs text-gray-500 max-w-sm leading-relaxed">
+        <span className="font-semibold text-gray-300">{tab}</span> requires{" "}
+        <span className="text-amber-400 font-semibold">{required}</span> clearance.
+        Contact your supervising officer to request elevated access.
+      </p>
+    </div>
+  );
+}
 
 export default function Home() {
   const [token, setToken] = useState<string | null>(null);
@@ -63,7 +90,7 @@ export default function Home() {
       formData.append("username", emailInput);
       formData.append("password", passwordInput);
       
-      const res = await fetch("http://localhost:8000/api/v1/auth/token", {
+      const res = await fetch(`${API_URL}/api/v1/auth/token`, {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: formData
@@ -339,24 +366,36 @@ export default function Home() {
 
           {/* TAB 3: Suspect Relationship Network */}
           {currentTab === "network" && (
-            <NetworkGraph />
+            TAB_ROLES.network.includes(user?.role ?? "") ? (
+              <NetworkGraph />
+            ) : (
+              <AccessDenied tab="Network Graph" required="Investigator or above" />
+            )
           )}
 
           {/* TAB 4: GIS Hotspot Map */}
           {currentTab === "map" && (
-            <GisMap />
+            TAB_ROLES.map.includes(user?.role ?? "") ? (
+              <GisMap />
+            ) : (
+              <AccessDenied tab="Hotspot Map" required="Investigator or above" />
+            )
           )}
 
           {/* TAB 5: Scenario Simulation */}
           {currentTab === "simulation" && (
-            <ScenarioSimulator />
+            TAB_ROLES.simulation.includes(user?.role ?? "") ? (
+              <ScenarioSimulator />
+            ) : (
+              <AccessDenied tab="Scenario Simulation" required="Supervisor" />
+            )
           )}
 
         </main>
       </div>
 
       {/* Floating Conversational AI drawer */}
-      <ChatContainer demoMode={demoMode} />
+      <ChatContainer demoMode={demoMode} user={user} />
 
       {/* Command Palette (Ctrl+K Modal) */}
       <CommandPalette 
