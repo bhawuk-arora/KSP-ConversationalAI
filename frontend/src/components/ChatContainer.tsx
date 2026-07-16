@@ -52,7 +52,7 @@ export default function ChatContainer({ demoMode }: ChatContainerProps) {
       const reader = response.body.getReader();
       const decoder = new TextDecoder();
       let done = false;
-      let botMessage = { sender: "bot", text: "", sql: "", confidence: 0, citations: [] };
+      let botMessage: { sender: "user" | "bot"; text: string; sql?: string; confidence?: number; citations?: string[] } = { sender: "bot", text: "", sql: "", confidence: 0, citations: [] };
 
       while (!done) {
         const { value, done: readerDone } = await reader.read();
@@ -65,14 +65,28 @@ export default function ChatContainer({ demoMode }: ChatContainerProps) {
             const data = JSON.parse(jsonStr);
             if (data.event === "message_chunk") {
               botMessage.text += data.text;
-              setMessages(prev => [...prev, { ...botMessage }]);
+              // Update last bot message in-place instead of appending a new one each chunk
+              setMessages(prev => {
+                const updated = [...prev];
+                const last = updated[updated.length - 1];
+                if (last && last.sender === "bot" && updated.length > 1) {
+                  updated[updated.length - 1] = { ...botMessage };
+                } else {
+                  updated.push({ ...botMessage });
+                }
+                return updated;
+              });
             } else if (data.event === "metadata") {
               botMessage.sql = data.sql_executed || "";
               botMessage.citations = data.citations || [];
               botMessage.confidence = data.confidence_score || 0;
-              setMessages(prev => [...prev, { ...botMessage }]);
+              setMessages(prev => {
+                const updated = [...prev];
+                updated[updated.length - 1] = { ...botMessage };
+                return updated;
+              });
             } else if (data.event === "error") {
-              setMessages(prev => [...prev, { sender: "bot", text: `Error: ${data.text}` }]);
+              setMessages(prev => [...prev, { sender: "bot" as const, text: `Error: ${data.text}` }]);
             }
           }
         }
