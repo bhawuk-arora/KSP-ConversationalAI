@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   # Relational Database with Geospatial PostGIS extension
   postgres:
