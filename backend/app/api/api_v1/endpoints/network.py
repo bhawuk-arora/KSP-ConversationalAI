@@ -6,11 +6,14 @@ from sqlalchemy.orm import Session
 from neo4j import GraphDatabase
 
 from app.core.database import get_db
-from app.api.deps import get_current_user
+from app.api.deps import get_current_user, RoleChecker
 from app.schemas.user import UserBase
 from app.models.ksp_models import Accused, CaseMaster
 
 router = APIRouter()
+
+# Constables cannot access full network graphs
+network_roles = RoleChecker(["Investigator", "Analyst", "Supervisor"])
 
 # Neo4j credentials
 NEO4J_URI = os.environ.get("NEO4J_URI", "bolt://localhost:7687")
@@ -167,7 +170,7 @@ def get_relational_fallback_network(accused_id: int, db: Session) -> Dict[str, A
 def trace_suspect_network(
     accused_id: int,
     db: Session = Depends(get_db),
-    current_user: UserBase = Depends(get_current_user)
+    current_user: UserBase = Depends(network_roles),
 ):
     """
     Traces relationship paths and co-offenders up to 2-hops.
