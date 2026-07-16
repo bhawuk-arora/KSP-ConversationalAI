@@ -1,10 +1,11 @@
 name: KSP Platform CI/CD
 
 on:
-  push:
-    # branches: [main, develop]
-  pull_request:
-    branches: [main]
+  workflow_dispatch: # CI disabled — run manually only
+  # push:
+  #   branches: [main, develop]
+  # pull_request:
+  #   branches: [main]
 
 jobs:
   # ─────────────────────────────────────────
