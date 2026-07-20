@@ -8,12 +8,7 @@ class Settings(BaseSettings):
     API_V1_STR: str = "/api/v1"
     
     # Database Settings
-    DB_HOST: str = "localhost"
-    DB_PORT: str = "5432"
-    DB_USER: str = "postgres"
-    DB_PASSWORD: str = "postgres"
-    DB_NAME: str = "ksp_db"
-    DATABASE_URL: Optional[str] = None
+    DATABASE_URL: str = "postgresql://postgres:postgres@localhost:5432/ksp_db"
     
     # JWT & Auth Settings (for later phases)
     JWT_SECRET_KEY: str = "ksp_jwt_secret_key_change_me_in_production"
@@ -22,9 +17,7 @@ class Settings(BaseSettings):
     
     @computed_field
     def SQLALCHEMY_DATABASE_URI(self) -> str:
-        if self.DATABASE_URL:
-            return self.DATABASE_URL
-        return f"postgresql://{self.DB_USER}:{self.DB_PASSWORD}@{self.DB_HOST}:{self.DB_PORT}/{self.DB_NAME}"
+        return self.DATABASE_URL
         
     model_config = SettingsConfigDict(
         env_file=".env",
