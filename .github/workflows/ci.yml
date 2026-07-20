@@ -104,7 +104,7 @@ jobs:
 
       - name: Build backend image
         run: |
-          docker build -t ksp-backend:ci ./backend
+          docker build -t ksp-backend:ci -f ./backend/Dockerfile .
 
       - name: Verify backend health endpoint
         run: |
@@ -145,7 +145,7 @@ jobs:
       - name: Build and push backend image
         uses: docker/build-push-action@v6
         with:
-          context: ./backend
+          context: .
           file: ./backend/Dockerfile
           push: true
           tags: |
