@@ -4,6 +4,6 @@
   "stack": "node22",
   "memory": 1024,
   "env_variables": {
-    "NEXT_PUBLIC_API_URL": "http://localhost:8000"
+    "NEXT_PUBLIC_API_URL": "https://ksp-backend-api-50042668571.development.catalystappsail.in"
   }
 }
