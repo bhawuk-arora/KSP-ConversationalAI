@@ -67,8 +67,8 @@ services:
   # KSP FastAPI Backend
   backend:
     build:
-      context: ./backend
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./backend/Dockerfile
     container_name: ksp-backend
     environment:
       DATABASE_URL: postgresql://postgres:postgres@postgres:5432/ksp_db
