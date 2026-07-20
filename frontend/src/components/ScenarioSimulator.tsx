@@ -30,7 +30,8 @@ export default function ScenarioSimulator() {
       const steps: Step[] = JSON.parse(stepsJson);
       const payload = { scenario_name: scenarioName, steps };
       const token = typeof window !== "undefined" ? localStorage.getItem("token") : null;
-      const res = await fetch("http://localhost:8000/api/v1/simulation/simulate", {
+      const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
+      const res = await fetch(`${API_URL}/api/v1/simulation/simulate`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

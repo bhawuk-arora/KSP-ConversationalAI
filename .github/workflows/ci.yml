@@ -87,6 +87,8 @@ jobs:
           npx tsc --noEmit || true
 
       - name: Build
+        env:
+          NEXT_PUBLIC_API_URL: https://ksp-backend-api-50042668571.development.catalystappsail.in
         run: |
           cd frontend
           npm run build
