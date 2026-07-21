@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && python rename_assets.py",
+    "build": "next build && node rename_assets.js",
     "start": "next start",
     "lint": "eslint"
   },
